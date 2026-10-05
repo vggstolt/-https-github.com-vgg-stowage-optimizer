@@ -25,12 +25,32 @@ export const optimizationStatus = {
 }
 
 export const optimizerOptions = [
-  { key: 'allCargoStowed', label: 'All cargo must be stowed', hint: 'The optimizer must find a tank for every cargo in the booking list.' },
-  { key: 'expectMoreCargo', label: 'Expect more cargo', hint: 'Keep spare capacity for cargoes that have not been fixed yet.' },
-  { key: 'minimizeChanges', label: 'Minimize changes for stowed cargos', hint: 'Prefer to keep already stowed cargoes in their current tanks.' },
+  {
+    key: 'allCargoStowed',
+    label: 'All cargo must be stowed',
+    hint: 'The optimizer must find a tank for every cargo in the booking list.',
+  },
+  {
+    key: 'expectMoreCargo',
+    label: 'Expect more cargo',
+    hint: 'Keep spare capacity for cargoes that have not been fixed yet.',
+  },
+  {
+    key: 'minimizeChanges',
+    label: 'Minimize changes for stowed cargos',
+    hint: 'Prefer to keep already stowed cargoes in their current tanks.',
+  },
   { key: 'clustering', label: 'Clustering', hint: 'Group tanks carrying the same cargo next to each other.' },
-  { key: 'improveHistory', label: 'Improve last cargo history future voyages', hint: 'Favour tank assignments that simplify cleaning for upcoming voyages.' },
-  { key: 'purging', label: 'Purging / Avoid sweating', hint: 'Avoid tanks where condensation or purging requirements apply.' },
+  {
+    key: 'improveHistory',
+    label: 'Improve last cargo history future voyages',
+    hint: 'Favour tank assignments that simplify cleaning for upcoming voyages.',
+  },
+  {
+    key: 'purging',
+    label: 'Purging / Avoid sweating',
+    hint: 'Avoid tanks where condensation or purging requirements apply.',
+  },
 ] as const
 
 export type OptimizerOptionKey = (typeof optimizerOptions)[number]['key']
@@ -39,7 +59,14 @@ export const cargoes: Cargo[] = [
   { id: '655', number: '655 (cc)', name: 'Sulfuric acid 99%', nominalQty: '12687 MT', terms: 'MNMXC' },
   { id: '660', number: '660', name: 'P&G FALCOHOL CO-1214', nominalQty: '12687 MT', terms: '10% MOLCO' },
   { id: '670', number: '670 (cc)', name: '2-ETHYLHEXYL ACRYLATE', nominalQty: '12687 MT', terms: '5% MOLCO' },
-  { id: '680', number: '680 (cc)', name: '2-ETHYLHEXYL ACRYLATE', nominalQty: '12687 MT', terms: '2% MOLOO', pending: true },
+  {
+    id: '680',
+    number: '680 (cc)',
+    name: '2-ETHYLHEXYL ACRYLATE',
+    nominalQty: '12687 MT',
+    terms: '2% MOLOO',
+    pending: true,
+  },
   { id: '900', number: '900', name: 'a/o 14/16/18 + bht', nominalQty: '8400 MT', terms: '5% MOLCO', pending: true },
   { id: '910', number: '910 (cc)', name: 'Methanol', nominalQty: '6200 MT', terms: 'MNMXC' },
   { id: '920', number: '920', name: 'Styrene monomer', nominalQty: '4100 MT', terms: '10% MOLCO' },
@@ -114,7 +141,6 @@ export const sgLegend: { band: SgBand; label: string; className: string }[] = [
   { band: '60plus', label: '60°C and above', className: 'text-f1' },
 ]
 
-export const sgBandClass: Record<SgBand, string> = Object.fromEntries(sgLegend.map((l) => [l.band, l.className])) as Record<
-  SgBand,
-  string
->
+export const sgBandClass: Record<SgBand, string> = Object.fromEntries(
+  sgLegend.map((l) => [l.band, l.className]),
+) as Record<SgBand, string>

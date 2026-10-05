@@ -18,14 +18,14 @@ const vesselDefaults = {
 
 export function OptimizerInputCard() {
   const [mode, setMode] = useState<Mode>('input')
-  const [options, setOptions] = useState<Record<OptimizerOptionKey, boolean>>(() =>
-    Object.fromEntries(optimizerOptions.map((o) => [o.key, false])) as Record<OptimizerOptionKey, boolean>,
+  const [options, setOptions] = useState<Record<OptimizerOptionKey, boolean>>(
+    () => Object.fromEntries(optimizerOptions.map((o) => [o.key, false])) as Record<OptimizerOptionKey, boolean>,
   )
   const [vessel, setVessel] = useState(vesselDefaults)
   const vesselDirty = JSON.stringify(vessel) !== JSON.stringify(vesselDefaults)
 
   return (
-    <Card className="flex flex-col gap-4 p-4">
+    <Card className="@container flex flex-col gap-4 p-4">
       <div className="flex items-center justify-between gap-4">
         <h2 className="t4 text-f1">Optimizer input</h2>
         <SegmentedControl
@@ -40,8 +40,8 @@ export function OptimizerInputCard() {
       </div>
 
       {mode === 'input' ? (
-        <div className="flex flex-col gap-6 lg:flex-row">
-          <div className="flex flex-col gap-3 lg:w-[380px] lg:shrink-0">
+        <div className="flex flex-col gap-6 @4xl:flex-row">
+          <div className="flex flex-col gap-3 @4xl:w-[380px] @4xl:shrink-0">
             {optimizerOptions.map((option) => (
               <div key={option.key} className="flex items-center justify-between gap-4">
                 <span className="inline-flex items-center gap-1.5 text-[14px] leading-5 text-f1">
@@ -59,16 +59,16 @@ export function OptimizerInputCard() {
             <TextField label="Optimizer run time (minutes)" defaultValue="Default" className="mt-2" />
           </div>
 
-          <div className="hidden w-px shrink-0 bg-n8 lg:block" />
+          <div className="hidden w-px shrink-0 bg-n8 @4xl:block" />
 
-          <div className="flex min-w-0 flex-1 flex-col gap-4">
+          <div className="@container flex min-w-0 flex-1 flex-col gap-4">
             <div className="flex items-center justify-between gap-4">
               <h3 className="t5 text-f1">Vessel inputs</h3>
               <LinkButton size="sm" disabled={!vesselDirty} onClick={() => setVessel(vesselDefaults)}>
                 Reset vessel input
               </LinkButton>
             </div>
-            <div className="grid grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-5 @md:grid-cols-2 @lg:grid-cols-3">
               <SelectField
                 label="Season"
                 value={vessel.season}
@@ -104,7 +104,7 @@ export function OptimizerInputCard() {
                 onChange={(e) => setVessel({ ...vessel, minFill: e.target.value })}
                 inputMode="numeric"
               />
-              <span className="hidden md:block" />
+              <span className="hidden @lg:block" />
               <TextField
                 label="Max temperature in deck tank (°C)"
                 helper="Current: 33°C"

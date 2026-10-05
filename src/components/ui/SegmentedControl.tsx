@@ -9,7 +9,13 @@ type SegmentedControlProps<T extends string> = {
 }
 
 /** Two-to-three option toggle. Selected segment is filled P1, others white with P1 text. */
-export function SegmentedControl<T extends string>({ options, value, onChange, className, ...aria }: SegmentedControlProps<T>) {
+export function SegmentedControl<T extends string>({
+  options,
+  value,
+  onChange,
+  className,
+  ...aria
+}: SegmentedControlProps<T>) {
   return (
     <div
       role="radiogroup"

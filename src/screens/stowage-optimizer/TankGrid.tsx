@@ -5,15 +5,7 @@ import { Tag } from '../../components/ui/Chip'
 import { Icon } from '../../components/ui/Icon'
 import { SegmentedControl } from '../../components/ui/SegmentedControl'
 import { Switch } from '../../components/ui/Switch'
-import {
-  centreTanks,
-  portWingTanks,
-  sgBandClass,
-  sgLegend,
-  starboardWingTanks,
-  weightSummary,
-  type Tank,
-} from './data'
+import { centreTanks, portWingTanks, sgBandClass, sgLegend, starboardWingTanks, weightSummary, type Tank } from './data'
 
 type ViewMode = 'SP' | 'LC'
 type StowMethod = 'drag' | 'click'
@@ -56,7 +48,7 @@ function TankCell({
         <span className="flex items-center justify-between gap-1 font-bold whitespace-nowrap">
           <span className="inline-flex items-center gap-0.5">
             <Icon name="temperature" size="xs" inline className={sgBandClass[tank.sgBand]} />
-            {tank.temperature}
+            <span className="hidden @[400px]:inline">{tank.temperature}</span>
           </span>
           <span>
             {tank.capacity} | {tank.id}
@@ -68,7 +60,13 @@ function TankCell({
         <Icon name="pinned" size="xs" inline className="absolute bottom-1.5 left-1.5 text-p1" title="Pinned tank" />
       )}
       {tank.avoid && (
-        <Icon name="avoid" size="xs" inline className="absolute bottom-1.5 left-1.5 text-danger" title="Tank to avoid" />
+        <Icon
+          name="avoid"
+          size="xs"
+          inline
+          className="absolute bottom-1.5 left-1.5 text-danger"
+          title="Tank to avoid"
+        />
       )}
       <span className="mt-auto flex items-center justify-end gap-1 pt-1">
         <Tag tone="neutral">{tank.quantity}</Tag>
@@ -166,7 +164,13 @@ function Controls() {
 
 export function TankGrid({ fullscreen, onToggleFullscreen }: { fullscreen: boolean; onToggleFullscreen: () => void }) {
   const [activeIds, setActiveIds] = useState<Set<string>>(
-    () => new Set(centreTanks.flat().filter((t) => t.selected).map((t) => t.id)),
+    () =>
+      new Set(
+        centreTanks
+          .flat()
+          .filter((t) => t.selected)
+          .map((t) => t.id),
+      ),
   )
 
   const toggle = (id: string) =>
@@ -199,7 +203,7 @@ export function TankGrid({ fullscreen, onToggleFullscreen }: { fullscreen: boole
         </div>
 
         <div
-          className="relative grid grid-cols-[1fr_1fr_4px_1fr] gap-[3px] self-start"
+          className="@container relative grid grid-cols-[1fr_1fr_4px_1fr] gap-[3px] self-start"
           role="grid"
           aria-label="Cargo tanks"
         >

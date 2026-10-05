@@ -74,9 +74,9 @@ export function CargoesCard() {
     setInputs((prev) => ({ ...prev, [selected.id]: { ...(prev[selected.id] ?? defaultInput), ...patch } }))
 
   return (
-    <Card className="flex flex-col">
-      <div className="flex flex-col lg:flex-row">
-        <aside className="flex flex-col border-b border-n8 lg:w-[256px] lg:shrink-0 lg:border-r lg:border-b-0">
+    <Card className="@container flex flex-col">
+      <div className="flex flex-col @3xl:flex-row">
+        <aside className="flex flex-col border-b border-n8 @3xl:w-[256px] @3xl:shrink-0 @3xl:border-r @3xl:border-b-0">
           <div className="flex items-center justify-between px-4 pt-4 pb-3">
             <h2 className="t4 text-f1">Cargoes ({cargoes.length})</h2>
             <LinkButton size="sm" disabled={Object.keys(inputs).length === 0} onClick={() => setInputs({})}>
@@ -95,7 +95,7 @@ export function CargoesCard() {
           </ul>
         </aside>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-3 p-4">
+        <div className="@container flex min-w-0 flex-1 flex-col gap-3 p-4">
           <div className="flex justify-end">
             <Button variant="primary">Tank Preference</Button>
           </div>
@@ -108,8 +108,8 @@ export function CargoesCard() {
             </LinkButton>
           </div>
 
-          <div className="flex flex-col gap-6 rounded-aub-sm border border-n8 p-4 md:flex-row">
-            <div className="flex flex-col gap-4 md:w-[400px] md:shrink-0">
+          <div className="flex flex-col gap-6 rounded-aub-sm border border-n8 p-4 @2xl:flex-row">
+            <div className="flex flex-col gap-4 @2xl:w-[400px] @2xl:shrink-0">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex flex-col text-[14px] leading-5 text-f1">
                   Include last cargo history in optimization
@@ -151,7 +151,10 @@ export function CargoesCard() {
                     { value: 'ignore', label: 'Ignore' },
                   ]}
                 />
-                <InfoHint className="mt-3" text="Controls how strictly the optimizer follows the stowage specification for this cargo." />
+                <InfoHint
+                  className="mt-3"
+                  text="Controls how strictly the optimizer follows the stowage specification for this cargo."
+                />
               </div>
               <div className="flex flex-col gap-3">
                 <span className="t9 text-f1">Intended quantity to be stowed (MT)</span>
@@ -174,7 +177,7 @@ export function CargoesCard() {
               </div>
             </div>
 
-            <div className="hidden w-px shrink-0 bg-n8 md:block" />
+            <div className="hidden w-px shrink-0 bg-n8 @2xl:block" />
 
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
