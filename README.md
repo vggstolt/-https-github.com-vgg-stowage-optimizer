@@ -21,7 +21,8 @@ npm install
 npm run dev
 ```
 
-Open <http://127.0.0.1:4873>. The screens are designed for the AUB desktop canvas
+Open <http://127.0.0.1:4873>. The dev server listens on all interfaces so the
+preview proxy can reach it. The screens are designed for the AUB desktop canvas
 (1440×1024 minimum; the reference layout is 1920×1080).
 
 Other scripts:
